@@ -121,9 +121,6 @@ public class Parser {
                 throw new DukeException("Improper day and hour assignment");
             }
             return new SnoozeCommand(index1,index2);
-        } else if (command.equals("schedule")){
-            Date date = DateParser.parseDateDDMMYYObj(description);
-            return new ScheduleCommand(date);
         } else if (command.equals("tentative")){
             return new TentativeCommand();
         } else if (command.equals("confirm")){
