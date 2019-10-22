@@ -1,6 +1,7 @@
 package duke.commands;
 
 import duke.exceptions.DukeException;
+import duke.gui.GUI;
 import duke.parsers.Parser;
 import duke.storage.Storage;
 import duke.tasks.Goal;
@@ -31,7 +32,7 @@ public class AddGoalCommand extends Command {
      * @param in the scanner object to handle secondary command IO
      */
     @Override
-    public void execute(MealList meals, Ui ui, Storage storage, User user, Scanner in) throws DukeException {
+    public void execute(MealList meals, Ui ui, Storage storage, User user, Scanner in, GUI gui) throws DukeException {
         //average kg loss per day should NOT be more than 0.13607787283kg (>0.3 pounds)
         //average calorie loss per day should NOT exceed 40% base calorie intake,
         // balanced at around 20% (1kg = 7700cal = 7.7kcal)

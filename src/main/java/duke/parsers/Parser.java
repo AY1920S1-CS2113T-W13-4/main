@@ -88,6 +88,8 @@ public class Parser {
                     historyCommand.clearHistory();
                 }
                 return historyCommand;
+            case "graph":
+                return new GUICommandParser().parse(UserInput);
             default:
                 throw new DukeException("\u2639 OOPS!!! I'm sorry, but I don't know what " + command + " means :-(");
         }

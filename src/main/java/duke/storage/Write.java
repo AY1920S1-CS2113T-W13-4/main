@@ -13,6 +13,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Set;
 
 public class Write implements StorageInterface {
     private BufferedWriter bufferedWriter = null;
@@ -129,11 +131,12 @@ public class Write implements StorageInterface {
         } else {
             toWrite += "F";
         }
-        ArrayList<Tuple> allWeight = user.getAllWeight();
-        for (int i = 0; i < user.getAllWeight().size(); i += 1) {
+        HashMap<String, Integer> allWeight = user.getAllWeight();
+        Iterator iterator = allWeight.keySet().iterator();
+        while (iterator.hasNext()) {
             toWrite += "\n";
-            String date = allWeight.get(i).date;
-            int weight = allWeight.get(i).weight;
+            String date = (String) iterator.next();
+            int weight = allWeight.get(date);
             toWrite += date + "|" + weight;
         }
         try {

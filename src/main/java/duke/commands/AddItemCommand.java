@@ -2,6 +2,7 @@ package duke.commands;
 
 import java.util.Scanner;
 
+import duke.gui.GUI;
 import duke.tasks.Meal;
 import duke.tasks.MealList;
 import duke.ui.Ui;
@@ -32,7 +33,7 @@ public class AddItemCommand extends Command {
      * @param in the scanner object to handle secondary command IO
      */
     @Override
-    public void execute(MealList meals, Ui ui, Storage storage, User user, Scanner in) {
+    public void execute(MealList meals, Ui ui, Storage storage, User user, Scanner in, GUI gui) {
         meals.addStoredItem(this.meal);
         ui.showAddedItem(this.meal);
         storage.updateDefaults(meals);

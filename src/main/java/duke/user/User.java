@@ -5,10 +5,7 @@ import duke.exceptions.DukeException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * This is a class that will store user information to be used for processing.
@@ -16,7 +13,7 @@ import java.util.Scanner;
  */
 
 public class User {
-    private ArrayList<Tuple> weight = new ArrayList();
+    private HashMap<String, Integer> weight = new HashMap<>();
     private int height = 0;
     private int age;
     private Gender sex;
@@ -30,6 +27,7 @@ public class User {
      * This is a contructor to create an empty user profile.
      * @Author Foo Chi Hen
      */
+
     public User() {
         this.isSetup = false;
     }
@@ -130,7 +128,12 @@ public class User {
         Calendar calendarDate = Calendar.getInstance();
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         String currentDate = dateFormat.format(calendarDate.getTime());
-        this.weight.add(new Tuple(currentDate, weight));
+        if (this.weight.containsKey(currentDate)) {
+            this.weight.replace(currentDate, weight);
+        }
+        else {
+            this.weight.put(currentDate, weight);
+        }
     }
 
     /**
@@ -148,7 +151,12 @@ public class User {
             throw new DukeException(e.getMessage());
         }
         String currentDate = dateFormat.format(temp.getTime());
-        this.weight.add(new Tuple(currentDate, weight));
+        if (this.weight.containsKey(currentDate)) {
+            this.weight.replace(currentDate, weight);
+        }
+        else {
+            this.weight.put(currentDate, weight);
+        }
     }
 
     public void setHeight(int height) {
@@ -180,14 +188,17 @@ public class User {
     }
 
     public int getWeight() {
-        return this.weight.get(this.weight.size() - 1).weight;
+        Calendar calendarDate = Calendar.getInstance();
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        String currentDate = dateFormat.format(calendarDate.getTime());
+        return this.weight.get(currentDate);
     }
 
     /**
      * This is a function to obtain all the weight at different date.
      */
 
-    public ArrayList<Tuple> getAllWeight() {
+    public HashMap<String, Integer> getAllWeight() {
         return this.weight;
     }
 

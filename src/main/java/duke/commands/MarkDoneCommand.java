@@ -1,5 +1,6 @@
 package duke.commands;
 
+import duke.gui.GUI;
 import duke.tasks.Meal;
 import duke.tasks.MealList;
 import duke.ui.Ui;
@@ -36,7 +37,7 @@ public class MarkDoneCommand extends Command {
      * @param in the scanner object to handle secondary command IO
      */
     @Override
-    public void execute(MealList tasks, Ui ui, Storage storage, User user, Scanner in) {
+    public void execute(MealList tasks, Ui ui, Storage storage, User user, Scanner in, GUI gui) {
         ArrayList<Meal> matchingMeals = new ArrayList<>();
         ArrayList<Meal> currentMeals = tasks.getMealsList(currentDate);
         for (Meal element: currentMeals) {

@@ -1,6 +1,7 @@
 package duke.commands;
 
 import duke.exceptions.DukeException;
+import duke.gui.GUI;
 import duke.tasks.Meal;
 import duke.tasks.MealList;
 import duke.ui.Ui;
@@ -53,7 +54,7 @@ public class DeleteCommand extends Command {
      * @param in the scanner object to handle secondary command IO
      */
     @Override
-    public void execute(MealList mealList, Ui ui, Storage storage, User user, Scanner in) throws DukeException {
+    public void execute(MealList mealList, Ui ui, Storage storage, User user, Scanner in, GUI gui) throws DukeException {
         if (index <= 0 || index > mealList.getMealsList(currentDate).size()) {
             throw new DukeException("Index provided out of bounds for list of meals on " + currentDate);
         }

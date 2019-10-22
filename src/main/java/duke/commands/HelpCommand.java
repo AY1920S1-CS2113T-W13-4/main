@@ -1,6 +1,7 @@
 package duke.commands;
 
 import duke.exceptions.DukeException;
+import duke.gui.GUI;
 import duke.tasks.MealList;
 import duke.ui.Ui;
 import duke.storage.Storage;
@@ -20,7 +21,7 @@ public class HelpCommand extends Command {
     }
 
     @Override
-    public void execute(MealList tasks, Ui ui, Storage storage, User user, Scanner in) throws DukeException {
+    public void execute(MealList tasks, Ui ui, Storage storage, User user, Scanner in, GUI gui) throws DukeException {
         ArrayList<String> helpLines = new ArrayList<>();
         storage.loadHelp(helpLines, specifiedHelp);
         ui.showHelp(helpLines);

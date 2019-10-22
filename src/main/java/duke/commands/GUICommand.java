@@ -12,20 +12,22 @@ import duke.storage.Storage;
 import duke.user.User;
 
 /**
- * AddCommand is a public class that inherits from abstract class Command.
- * An AddCommand object encapsulates the current meal that is to be added.
- * @author Ivan Andika Lie
+ * Display desired data based on dates
  */
-public class AddCommand extends Command {
-    private Meal meal;
+public class GUICommand extends Command {
+    private String startDate;
+    private String endDate;
+    private String type;
 
     /**
      * This is a constructor for AddCommand which create a new AddCommand object with
      * the meal specified as the instance field meal.
      * @param meal The meal to be added.
      */
-    public AddCommand(Meal meal) {
-        this.meal = meal;
+    public GUICommand(String type, String startDate, String endDate) {
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.type = type;
     }
 
     /**
@@ -37,9 +39,12 @@ public class AddCommand extends Command {
      */
     @Override
     public void execute(MealList meals, Ui ui, Storage storage, User user, Scanner in, GUI gui) throws DukeException {
-        meals.addMeals(this.meal);
-        ArrayList<Meal> mealData = meals.getMealTracker().get(this.meal.getDate());
-        ui.showAdded(this.meal, mealData, user, this.meal.getDate());
-        storage.updateFile(meals);
+        gui.setMealList(meals.getMealTracker());
+        gui.setWeight(user.getAllWeight());
+        gui.setStartDate(this.startDate);
+        gui.setEndDate(this.endDate);
+        gui.setType(this.type);
+        String[] args = {};
+        gui.main(args);
     }
 }

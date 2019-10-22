@@ -1,6 +1,7 @@
 package duke.commands;
 
 import duke.exceptions.DukeException;
+import duke.gui.GUI;
 import duke.storage.Storage;
 import duke.tasks.Meal;
 import duke.tasks.MealList;
@@ -17,7 +18,7 @@ public class EditCommand extends Command {
     }
 
     @Override
-    public void execute(MealList meals, Ui ui, Storage storage, User user, Scanner in) throws DukeException {
+    public void execute(MealList meals, Ui ui, Storage storage, User user, Scanner in, GUI gui) throws DukeException {
         updatedMeal = meals.updateMeal(updatedMeal);
         String dateStr = updatedMeal.getDate();
         ui.showUpdated(this.updatedMeal, meals.getMealsList(this.updatedMeal.getDate()), user, dateStr);

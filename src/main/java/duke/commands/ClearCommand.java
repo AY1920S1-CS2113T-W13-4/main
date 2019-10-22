@@ -1,6 +1,7 @@
 package duke.commands;
 
 import duke.exceptions.DukeException;
+import duke.gui.GUI;
 import duke.storage.Storage;
 import duke.tasks.MealList;
 import duke.ui.Ui;
@@ -29,7 +30,7 @@ public class ClearCommand extends Command {
     }
 
     @Override
-    public void execute(MealList mealList, Ui ui, Storage storage, User user, Scanner in) {
+    public void execute(MealList mealList, Ui ui, Storage storage, User user, Scanner in, GUI gui) {
         Calendar cal = Calendar.getInstance();
         cal.setTime(startDate);
         for (cal.setTime(startDate); !cal.getTime().after(endDate); cal.add(Calendar.DATE, 1)) {

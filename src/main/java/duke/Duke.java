@@ -2,6 +2,7 @@ package duke;
 
 import duke.commands.Command;
 import duke.exceptions.DukeException;
+import duke.gui.GUI;
 import duke.storage.Storage;
 import duke.tasks.MealList;
 import duke.ui.Ui;
@@ -23,6 +24,7 @@ public class Duke {
     private Scanner in = new Scanner(System.in);
     private User user;
     private Autocorrect autocorrect;
+    private GUI gui;
 
     /**
      * This is a constructor of Duke to start the program.
@@ -32,6 +34,7 @@ public class Duke {
         storage = new Storage();
         user = new User();
         autocorrect = new Autocorrect();
+        gui = new GUI();
         try {
             storage.load(tasks);
         } catch (DukeException e) {
@@ -77,7 +80,7 @@ public class Duke {
                 String fullCommand = ui.readCommand(in);
                 ui.showLine();
                 Command c = UserParser.parse(fullCommand);
-                c.execute(tasks, ui, storage, user, in);
+                c.execute(tasks, ui, storage, user, in, gui);
                 isExit = c.isExit();
             } catch (DukeException e) {
                 ui.showMessage(e.getMessage());

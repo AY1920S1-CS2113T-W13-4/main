@@ -1,5 +1,6 @@
 package duke.commands;
 
+import duke.gui.GUI;
 import duke.tasks.MealList;
 import duke.ui.Ui;
 import duke.storage.Storage;
@@ -27,7 +28,7 @@ public class ExitCommand extends Command {
      * @param in the scanner object to handle secondary command IO
      */
     @Override
-    public void execute(MealList tasks, Ui ui, Storage storage, User user, Scanner in) {
+    public void execute(MealList tasks, Ui ui, Storage storage, User user, Scanner in, GUI gui) {
         ui.showBye();
     }
 }

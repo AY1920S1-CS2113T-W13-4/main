@@ -29,6 +29,7 @@ public class MealList {
      * This is the constructor of MealList object if there is no argument.
      * The MealList object will initialise a new empty arraylist of meals.
      */
+
     public MealList() {
     }
 
@@ -65,6 +66,7 @@ public class MealList {
      * @return Returns updated meal information.
      * @throws DukeException Exception thrown if meal description or date not found in current list.
      */
+
     public Meal updateMeal(Meal newMeal) throws DukeException {
         String dateStr = newMeal.getDate();
         if (mealTracker.containsKey(dateStr)) {
@@ -137,6 +139,7 @@ public class MealList {
      * This function is a getter for the mealtracker HashMap.
      * @return mealTracker the data structure storing the list of all meals
      */
+
     public HashMap<String, ArrayList<Meal>> getMealTracker() {
         return mealTracker;
     }
