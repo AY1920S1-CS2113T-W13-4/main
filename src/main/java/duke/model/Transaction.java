@@ -10,13 +10,11 @@ public class Transaction {
     protected SimpleDateFormat dateParser = new SimpleDateFormat("dd/MM/yyyy");
     protected String date = dateParser.format(Calendar.getInstance().getTime());
 
-    public Transaction(BigDecimal transactionAmount, String dateString) {
-        this.transactionAmount = transactionAmount;
-        this.date = dateString;
-    }
-
-    public Transaction(BigDecimal transactionAmount) {
-        this.transactionAmount = transactionAmount;
+    public Transaction(String amountString, String dateString) {
+        this.transactionAmount = new BigDecimal(amountString);
+        if (!dateString.isBlank()) {
+            this.date = dateString;
+        }
     }
 
     public String getType() {

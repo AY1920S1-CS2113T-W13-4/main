@@ -8,6 +8,7 @@ public class SetgoalCommandParser implements ParserInterface<AddGoalCommand> {
 
     @Override
     public AddGoalCommand parse(String userInput) throws DukeException {
+        InputValidator.validate(userInput);
         String name = userInput.split(" ", 2)[0].trim();
         String info = userInput.split(" ", 2)[1];
         return new AddGoalCommand(new Goal(name, info));

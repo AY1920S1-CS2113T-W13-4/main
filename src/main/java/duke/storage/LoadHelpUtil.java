@@ -8,7 +8,6 @@ import java.io.File;
 public class LoadHelpUtil {
 
     public static File load(String specifiedHelp) {
-        String line = "";
         String helpFileName = "";
         File helpFile;
         if (specifiedHelp.isBlank()) {
