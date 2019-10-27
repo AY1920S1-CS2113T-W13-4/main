@@ -1,4 +1,4 @@
-package duke.functions;
+/**package duke.functions;
 
 import duke.logic.autocorrect.Autocorrect;
 import duke.logic.commands.*;
@@ -75,5 +75,5 @@ public class FunctionTest {
         assertFalse(exceptionThrown1);
         assertTrue(exceptionThrown2);
     }
-}
+}**/
 
