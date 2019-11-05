@@ -36,6 +36,10 @@ public class Account {
         this.amount = amount.add(deposit);
     }
 
+    /**
+     * withdraw amount from the account.
+     * @param withdrawal amount withdrawn.
+     */
     public void withdraw(BigDecimal withdrawal) {
         this.amount = amount.subtract(withdrawal);
     }
