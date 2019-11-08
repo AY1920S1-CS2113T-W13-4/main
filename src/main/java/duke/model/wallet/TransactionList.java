@@ -20,12 +20,6 @@ public class TransactionList {
         return deletedTransaction;
     }
 
-    public void deleteAllTransactionOnDate(LocalDate date) {
-        if (transactionTracker.containsKey(date)) {
-            this.transactionTracker.get(date).clear();
-        }
-    }
-
     public void addTransaction(Transaction transaction) {
         LocalDate date = transaction.getDate();
         if (!transactionTracker.containsKey(date)) {

@@ -13,16 +13,12 @@ public class Wallet {
         return transactions;
     }
 
-    public Account getAccount() {
+    private Account getAccount() {
         return account;
     }
 
     public BigDecimal getAccountBalance() {
         return this.account.getAmount();
-    }
-
-    public void setAccountBalance(String accountBalance) {
-        this.account.setAmount(new BigDecimal(accountBalance));
     }
 
     public void updateAccountBalance(Transaction transaction) {

@@ -15,7 +15,7 @@ public class InputValidator {
      * @param userInput String input by user.
      * @throws DukeException If the userInput is empty.
      */
-    public static void validate(String userInput) throws DukeException {
+    public static boolean validate(String userInput) throws DukeException {
         if (userInput.trim().length() == 0) {
             throw new DukeException("OOPS!!! The description of the command cannot be empty.");
         }

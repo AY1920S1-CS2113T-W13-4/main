@@ -25,6 +25,17 @@
       "costStr": "0"
     },
     {
+      "description": "kf",
+      "type": "B",
+      "mealType": "BREAKFAST",
+      "isDone": false,
+      "date": "2019-11-08",
+      "nutritionValue": {
+        "calorie": 5000
+      },
+      "costStr": "0"
+    },
+    {
       "description": "mee sotong",
       "type": "L",
       "mealType": "LUNCH",
@@ -58,15 +69,15 @@
       "costStr": "0"
     },
     {
-      "description": "kf",
+      "description": "kfr",
       "type": "B",
       "mealType": "BREAKFAST",
       "isDone": false,
       "date": "2019-11-08",
       "nutritionValue": {
-        "calorie": 5000
+        "calorie": 500
       },
-      "costStr": "0"
+      "costStr": "2.5"
     }
   ],
   "2019-11-06": [
