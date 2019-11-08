@@ -4,6 +4,7 @@ import duke.commons.exceptions.DukeException;
 import duke.logic.commands.AddTransactionCommand;
 import duke.model.wallet.Deposit;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 

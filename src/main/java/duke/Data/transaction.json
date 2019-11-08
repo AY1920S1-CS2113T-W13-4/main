@@ -11,6 +11,11 @@
           "transactionAmount": 200,
           "type": "DEP",
           "date": "2019-10-10"
+        },
+        {
+          "transactionAmount": 200,
+          "type": "PAY",
+          "date": "2019-10-10"
         }
       ],
       "2019-11-08": [
@@ -21,6 +26,21 @@
         },
         {
           "transactionAmount": 200,
+          "type": "PAY",
+          "date": "2019-11-08"
+        },
+        {
+          "transactionAmount": 100,
+          "type": "PAY",
+          "date": "2019-11-08"
+        },
+        {
+          "transactionAmount": 100,
+          "type": "PAY",
+          "date": "2019-11-08"
+        },
+        {
+          "transactionAmount": 100,
           "type": "PAY",
           "date": "2019-11-08"
         }
@@ -167,7 +187,7 @@
     }
   },
   "account": {
-    "amount": 795.50,
+    "amount": 295.50,
     "currency": "SGD"
   }
 }
