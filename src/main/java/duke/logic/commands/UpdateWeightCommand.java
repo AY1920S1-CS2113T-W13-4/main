@@ -64,31 +64,27 @@ public class UpdateWeightCommand extends Command {
 
     public void stage0(User user, Storage storage) {
         ui.showLine();
-        if (Integer.parseInt(weight) > 2) {
-            HashMap<LocalDate, Double> allWeight = user.getAllWeight();
-            if (!allWeight.containsKey(currentDate)) {
-                try {
-                    user.setWeight(Integer.parseInt(weight), currentDate);
-                    ui.showWeightUpdate(user, Integer.parseInt(weight), currentDate);
-                } catch (NumberFormatException e) {
-                    ui.showMessage("Please input a proper number for weight");
-                }
-            } else {
-                try {
-                    int temp = Integer.parseInt(weight);
-                    isDone = false;
-                    ui.showConfirmation(weight, currentDate);
-                } catch (NumberFormatException e) {
-                    ui.showMessage("Please input a proper number for weight");
-                }
+        try {
+            if (Integer.parseInt(weight) < 2) {
+                ui.showMessage("Weight cannot be less than 2kg(Unless you really are the lightest man on earth!)");
+                return;
             }
-            try {
-                storage.updateUser(user);
-            } catch (DukeException e) {
-                ui.showMessage(e.getMessage());
-            }
+        } catch (NumberFormatException e) {
+            ui.showMessage("Please input a proper number for weight");
+            return;
+        }
+        HashMap<LocalDate, Double> allWeight = user.getAllWeight();
+        if (!allWeight.containsKey(currentDate)) {
+            user.setWeight(Integer.parseInt(weight), currentDate);
+            ui.showWeightUpdate(user, Integer.parseInt(weight), currentDate);
         } else {
-            ui.showMessage("Weight cannot be less than 2kg(Unless you really are the lightest man on earth!)");
+            isDone = false;
+            ui.showConfirmation(weight, currentDate);
+        }
+        try {
+            storage.updateUser(user);
+        } catch (DukeException e) {
+            ui.showMessage(e.getMessage());
         }
         ui.showLine();
     }

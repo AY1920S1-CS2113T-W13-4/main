@@ -16,3 +16,5 @@ weight
 height
 activity
 gender
+undo
+clear

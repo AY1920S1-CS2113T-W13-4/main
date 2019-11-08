@@ -2,7 +2,7 @@ package duke.ui;
 
 import duke.model.user.User;
 
-//@@author-koushireo
+//@@author　koushireo
 
 /** UserUi is a public class that facilitates the output of User info.
  */
