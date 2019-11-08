@@ -1,0 +1,19 @@
+{
+  "weight": {
+    "2019-11-08": 75.0
+  },
+  "height": 175,
+  "age": 21,
+  "gender": "MALE",
+  "isSetup": true,
+  "name": "Ivan",
+  "activityLevel": 2,
+  "factor": [
+    1.2,
+    1.375,
+    1.55,
+    1.725,
+    1.9
+  ],
+  "originalWeight": 0.0
+}
