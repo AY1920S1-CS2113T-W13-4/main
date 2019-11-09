@@ -16,12 +16,12 @@ checkstyle {
     toolVersion "8.23"
 }
 
-group 'duke'
-version '1.3'
+group 'diyeats'
+version '1.4'
 
 shadowJar {
-    archiveBaseName = "duke"
-    archiveVersion = "1.3"
+    archiveBaseName = "DIYeats"
+    archiveVersion = "1.4"
     archiveClassifier = null
     archiveAppendix = null
     archiveAppendix = null
@@ -30,7 +30,7 @@ shadowJar {
 sourceSets {
     main {
         resources {
-            srcDirs = ['src/main/java/']
+            srcDirs = ['./src']
         }
     }
 }
@@ -68,5 +68,5 @@ test {
 
 application {
     // Change this to your main class.
-    mainClassName = "duke.Main"
+    mainClassName = "diyeats.Main"
 }
