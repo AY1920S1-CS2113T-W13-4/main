@@ -9,6 +9,7 @@ import duke.ui.Ui;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.logging.Logger;
 
 import static duke.commons.constants.DateConstants.LOCAL_DATE_FORMATTER;
 
@@ -20,6 +21,7 @@ public abstract class Command {
     protected DateTimeFormatter dateFormat = LOCAL_DATE_FORMATTER;
     protected LocalDate currentDate = LocalDate.now();
     protected Ui ui = new Ui();
+    protected Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
     protected String responseStr;
     protected boolean isDone = true;
     protected boolean isFail = false;

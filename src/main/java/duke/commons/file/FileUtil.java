@@ -12,6 +12,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.StringReader;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 //@@author HashirZahir
 /**
@@ -21,7 +23,8 @@ import java.io.StringReader;
 
 public class FileUtil {
 
-    private static final String systemFileSep = System.getProperty("file.separator");
+    private static final String systemFileSep = "/";
+    private static Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
     /**
      * Reads file from jar resource or user filesystem.
@@ -55,9 +58,11 @@ public class FileUtil {
      */
     public static BufferedReader readResourceFile(String fileStr) {
         try {
+            logger.log(Level.FINE, "Loading Resource: " + fileStr);
             InputStream is = FileUtil.class.getClassLoader().getResourceAsStream(fileStr);
             return new BufferedReader(new InputStreamReader(is));
         } catch (NullPointerException e) {
+            logger.log(Level.WARNING, "Unable to read resource file: " + fileStr);
             // TODO: Better Exception handling for invalid resource file.
             return new BufferedReader(new StringReader(""));
         }
@@ -75,6 +80,7 @@ public class FileUtil {
     }
 
     private static BufferedReader getReaderFromFile(File file) throws DukeException {
+        logger.log(Level.FINE, "Attempting to read file: " + file);
         BufferedReader bufferedReader;
         try {
             bufferedReader = new BufferedReader(new FileReader(file));
@@ -92,6 +98,7 @@ public class FileUtil {
      * @throws DukeException if application has difficulty creating new file in host system.
      */
     private static void createMissingFile(File file) throws DukeException {
+        logger.log(Level.FINE, "Attempting to create file: " + file);
         if (file.exists()) {
             return;
         }

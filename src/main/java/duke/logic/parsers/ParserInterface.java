@@ -5,6 +5,7 @@ import duke.logic.commands.Command;
 import duke.ui.Ui;
 
 import java.time.format.DateTimeFormatter;
+import java.util.logging.Logger;
 
 import static duke.commons.constants.DateConstants.LOCAL_DATE_FORMATTER;
 
@@ -15,6 +16,7 @@ import static duke.commons.constants.DateConstants.LOCAL_DATE_FORMATTER;
 public interface ParserInterface<T extends Command> {
     Ui ui = new Ui();
     DateTimeFormatter dateFormat = LOCAL_DATE_FORMATTER;
+    Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
     /**
      * Parses user input into a Command of type T and returns it.
