@@ -3,6 +3,8 @@ package diyeats.logic.parsers;
 import diyeats.commons.exceptions.ProgramException;
 import diyeats.logic.commands.CGraphCommand;
 
+import java.util.HashMap;
+
 //@@author koushireo
 
 /**
@@ -17,7 +19,6 @@ public class CGraphCommandParser implements ParserInterface<CGraphCommand> {
      * @throws ProgramException when the user input cannot be parsed
      */
     @Override
-
     public CGraphCommand parse(String userInputStr) {
         int month = 0;
         try {
@@ -25,9 +26,12 @@ public class CGraphCommandParser implements ParserInterface<CGraphCommand> {
         } catch (ProgramException e) {
             return new CGraphCommand(false, e.getMessage());
         }
-        String[] lineSplit = ArgumentSplitter.splitArguments(userInputStr," ");
+        HashMap<String, String> lineSplit = ArgumentSplitter.splitForwardSlashArguments(userInputStr);
+        if (!lineSplit.containsKey("month")) {
+            return new CGraphCommand(false, "Please input the month using /month.");
+        }
         try {
-            month = Integer.parseInt(lineSplit[2]);
+            month = Integer.parseInt(lineSplit.get("month"));
         } catch (NumberFormatException e) {
             return new CGraphCommand(false, "Please input a valid number for month");
         }
@@ -35,12 +39,18 @@ public class CGraphCommandParser implements ParserInterface<CGraphCommand> {
             return new CGraphCommand(false, "Month can only be between 1 to 12");
         }
         int year = 0;
+        if (!lineSplit.containsKey("year")) {
+            return new CGraphCommand(false, "Please input the year using /year.");
+        }
         try {
-            year = Integer.parseInt(lineSplit[4]);
+            year = Integer.parseInt(lineSplit.get("year"));
         } catch (NumberFormatException e) {
             return new CGraphCommand(false, "Please input a valid number for year");
         }
-        String type = lineSplit[0];
+        if (!lineSplit.containsKey("type")) {
+            return new CGraphCommand(false, "Please input the type using /type.");
+        }
+        String type = lineSplit.get("type");
         return new CGraphCommand(month, year, type);
     }
 }

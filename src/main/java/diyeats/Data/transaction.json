@@ -1,6 +1,18 @@
 {
   "transactions": {
     "transactionTracker": {
+      "2019-11-10": [
+        {
+          "transactionAmount": 300,
+          "type": "PAY",
+          "date": "2019-11-10"
+        },
+        {
+          "transactionAmount": 300,
+          "type": "PAY",
+          "date": "2019-11-10"
+        }
+      ],
       "2019-11-06": [
         {
           "transactionAmount": 200,
@@ -143,7 +155,7 @@
     }
   },
   "account": {
-    "amount": 395.50,
+    "amount": -1734.50,
     "currency": "SGD"
   }
 }

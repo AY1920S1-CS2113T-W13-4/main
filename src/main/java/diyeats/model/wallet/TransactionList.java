@@ -18,6 +18,14 @@ public class TransactionList {
         return deletedTransaction;
     }
 
+    //To facilitate undo
+    public Transaction deleteTransaction(LocalDate date) {
+        Transaction deletedTransaction = this.transactionTracker
+                .get(date).get(this.transactionTracker.get(date).size() - 1);
+        this.transactionTracker.get(date).remove(this.transactionTracker.get(date).size() - 1);
+        return deletedTransaction;
+    }
+
     public void deleteAllTransactionOnDate(LocalDate date) {
         if (transactionTracker.containsKey(date)) {
             this.transactionTracker.get(date).clear();

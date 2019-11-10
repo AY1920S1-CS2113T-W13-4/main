@@ -31,7 +31,6 @@ public class PaymentCommandParser implements ParserInterface<AddTransactionComma
                             + "Please follow DD/MM/YYYY format.");
                 }
             }
-
             return new AddTransactionCommand(new Payment(amountAndDate[0], localDate));
         } catch (ProgramException e) {
             return new AddTransactionCommand(false, e.getMessage());

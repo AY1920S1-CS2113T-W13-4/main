@@ -4,6 +4,7 @@ import diyeats.commons.datatypes.Pair;
 import diyeats.commons.exceptions.ProgramException;
 import diyeats.logic.suggestion.ExerciseSuggestionHandler;
 import diyeats.model.meal.MealList;
+import diyeats.model.undo.Undo;
 import diyeats.model.user.User;
 import diyeats.model.wallet.Wallet;
 import diyeats.storage.Storage;
@@ -38,7 +39,7 @@ public class SuggestExerciseCommand extends Command {
     }
 
     @Override
-    public void execute(MealList meals, Storage storage, User user, Wallet wallet) {
+    public void execute(MealList meals, Storage storage, User user, Wallet wallet, Undo undo) {
         isDone = false;
         switch (stage) {
             case 0:

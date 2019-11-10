@@ -8,7 +8,7 @@ import java.util.HashMap;
  * A task object encapsulates the description of the task, the type of task it is, and whether
  * the task is done.
  */
-public class Meal {
+public class Meal implements Cloneable {
     protected String description;
     protected String type = "";
     protected MealType mealType;
@@ -138,5 +138,7 @@ public class Meal {
         return "[" + this.type + "]" + this.getStatusIcon() + " " + this.description + " | " + temp;
     }
 
-
+    protected Object clone() throws CloneNotSupportedException {
+        return super.clone();
+    }
 }

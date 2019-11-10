@@ -1,13 +1,13 @@
 {
   "weight": {
-    "2019-11-08": 70.0
+    "2019-11-10": 95.0
   },
-  "lastDate": "2019-11-08",
-  "height": 175,
+  "lastDate": "2019-11-10",
+  "height": 100,
   "age": 22,
   "gender": "MALE",
   "isSetup": true,
-  "name": "Hashir",
+  "name": "Foo Chi Hen",
   "activityLevel": 2,
   "factor": [
     1.2,
@@ -16,5 +16,5 @@
     1.725,
     1.9
   ],
-  "originalWeight": 70.0
+  "originalWeight": 0.0
 }

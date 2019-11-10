@@ -27,6 +27,15 @@ public class Transaction {
         return this.transactionAmount;
     }
 
+    //to facilitate undo
+    public void changeType() {
+        if (this.type.equals("PAY")) {
+            this.type = "DEP";
+        } else {
+            this.type = "PAY";
+        }
+    }
+
     @Override
     public String toString() {
         return " SGD" + this.transactionAmount + " | " + getDate().format(LOCAL_DATE_FORMATTER);

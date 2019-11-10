@@ -132,6 +132,20 @@ public class MealList {
         return meal1.getDescription().equals(meal2.getDescription()) && meal1.getDate().equals(meal2.getDate());
     }
 
+    public Meal getSameMeal(Meal meal) {
+        ArrayList<Meal> temp = mealTracker.get(meal.getDate());
+        for (int i = 0; i < temp.size(); i += 1) {
+            if (checkIsSameMeal(meal, temp.get(i))) {
+                try {
+                    return (Meal)temp.get(i).clone();
+                } catch (CloneNotSupportedException e) {
+                    return null;
+                }
+            }
+        }
+        return null;
+    }
+
     /**
      * This function is used to check if a entry with the corresponding date is stored.
      * @param date the date to be checked
@@ -160,6 +174,11 @@ public class MealList {
             mealTracker.put(inputDate, new ArrayList<>());
             return mealTracker.get(inputDate);
         }
+    }
+
+    public void setMealsList(LocalDate inputDate, ArrayList<Meal> mealList) {
+        mealTracker.remove(inputDate);
+        mealTracker.put(inputDate, mealList);
     }
 
     /**
@@ -195,4 +214,5 @@ public class MealList {
     public ExerciseList getExerciseList() {
         return this.exerciseList;
     }
+
 }

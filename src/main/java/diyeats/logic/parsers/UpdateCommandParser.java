@@ -1,9 +1,12 @@
 package diyeats.logic.parsers;
 
+import diyeats.commons.exceptions.ProgramException;
+import diyeats.logic.commands.CGraphCommand;
 import diyeats.logic.commands.UpdateCommand;
 
 import java.util.HashMap;
 
+//@@author koushireo
 /**
  * Parser class to handle addition of breakfast item to model.
  */
@@ -22,14 +25,18 @@ public class UpdateCommandParser implements ParserInterface<UpdateCommand> {
         String height;
         String name;
         String activity;
+        boolean flag = false;
         String[] temp = {"age", "weight", "date", "height", "name", "activity"};
         HashMap<String, String> map = ArgumentSplitter.splitForwardSlashArguments(userInputStr);
+
         if (map.containsKey("age")) {
+            flag = true;
             age = map.get("age");
         } else {
             age = null;
         }
         if (map.containsKey("weight")) {
+            flag = true;
             weight = map.get("weight");
         } else {
             weight = null;
@@ -40,20 +47,29 @@ public class UpdateCommandParser implements ParserInterface<UpdateCommand> {
             date = null;
         }
         if (map.containsKey("height")) {
+            flag = true;
             height = map.get("height");
         } else {
             height = null;
         }
         if (map.containsKey("name")) {
+            flag = true;
             name = map.get("name");
         } else {
             name = null;
         }
         if (map.containsKey("activity")) {
+            flag = true;
             activity = map.get("activity");
         } else {
             activity = null;
         }
+
+        if (flag == false) {
+            return new UpdateCommand(false, "Please enter proper parameters(/name, /age, /weight [/date],\n"
+                    + "/height /activity level");
+        }
+
         return new UpdateCommand(age, weight, date, height, name, activity);
     }
 }

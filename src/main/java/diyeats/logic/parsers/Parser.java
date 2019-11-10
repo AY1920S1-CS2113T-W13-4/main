@@ -5,6 +5,7 @@ import diyeats.logic.autocorrect.Autocorrect;
 import diyeats.logic.commands.Command;
 import diyeats.logic.commands.ExitCommand;
 import diyeats.logic.commands.StatsCommand;
+import diyeats.logic.commands.UndoCommand;
 
 import static diyeats.commons.constants.CommandDefinitions.PARSER_ADD_COMMAND;
 import static diyeats.commons.constants.CommandDefinitions.PARSER_ADD_GOAL_COMMAND;
@@ -27,6 +28,7 @@ import static diyeats.commons.constants.CommandDefinitions.PARSER_STATS_COMMAND;
 import static diyeats.commons.constants.CommandDefinitions.PARSER_SUGGEST_EXERCISE_COMMAND;
 import static diyeats.commons.constants.CommandDefinitions.PARSER_SUGGEST_MEAL_COMMAND;
 import static diyeats.commons.constants.CommandDefinitions.PARSER_UPDATE_COMMAND;
+import static diyeats.commons.constants.CommandDefinitions.PARSER_UNDO_COMMAND;
 import static diyeats.commons.exceptions.ExceptionMessages.UNKNOWN_COMMAND;
 
 /**
@@ -70,6 +72,8 @@ public class Parser {
         switch (commandStr) {
             case PARSER_EXIT_COMMAND:
                 return new ExitCommand();
+            case PARSER_UNDO_COMMAND:
+                return new UndoCommand();
             case PARSER_BREAKFAST_COMMAND:
                 return new AddBreakfastCommandParser().parse(argumentStr);
             case PARSER_LUNCH_COMMAND:

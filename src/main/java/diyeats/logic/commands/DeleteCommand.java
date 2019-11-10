@@ -3,6 +3,7 @@ package diyeats.logic.commands;
 import diyeats.commons.exceptions.ProgramException;
 import diyeats.model.meal.Meal;
 import diyeats.model.meal.MealList;
+import diyeats.model.undo.Undo;
 import diyeats.model.user.User;
 import diyeats.model.wallet.Wallet;
 import diyeats.storage.Storage;
@@ -23,7 +24,8 @@ public class DeleteCommand extends Command {
 
     /**
      * Constructor for DeleteCommand.
-     * @param indexStr the index of meal on the date to be deleted.
+     *
+     * @param indexStr   the index of meal on the date to be deleted.
      * @param dateStrArg Date of meal to be deleted.
      */
     public DeleteCommand(String indexStr, String dateStrArg) {
@@ -37,6 +39,7 @@ public class DeleteCommand extends Command {
 
     /**
      * Constructor for DeleteCommand.
+     *
      * @param indexStr the index of meal to be deleted.
      */
     public DeleteCommand(String indexStr) {
@@ -48,6 +51,10 @@ public class DeleteCommand extends Command {
         }
     }
 
+    public DeleteCommand(LocalDate date) {
+        parsedDate = date;
+    }
+
     public DeleteCommand(boolean flag, String messageStr) {
         this.isFail = true;
         this.errorStr = messageStr;
@@ -55,18 +62,20 @@ public class DeleteCommand extends Command {
 
     /**
      * Executes the DeleteCommand.
-     * @param meals the MealList object in which the meals are supposed to be added
+     *
+     * @param meals   the MealList object in which the meals are supposed to be added
      * @param storage the storage object that handles all reading and writing to files
-     * @param user the object that handles all user data
-     * @param wallet the wallet object that stores transaction information
+     * @param user    the object that handles all user data
+     * @param wallet  the wallet object that stores transaction information
      */
     @Override
-    public void execute(MealList meals, Storage storage, User user, Wallet wallet) {
+    public void execute(MealList meals, Storage storage, User user, Wallet wallet, Undo undo) {
         ui.showLine();
         if (index <= 0 || index > meals.getMealsList(parsedDate).size()) {
             ui.showMessage("Index provided out of bounds for list of meals on the indicated date");
         } else {
             Meal currentMeal = meals.delete(parsedDate, index);
+            undo.undoDelete(currentMeal);
             ui.showDeleted(currentMeal, meals.getMealsList(parsedDate));
             try {
                 storage.updateFile(meals);
@@ -77,5 +86,4 @@ public class DeleteCommand extends Command {
         }
         ui.showLine();
     }
-
 }

@@ -3,6 +3,7 @@ package diyeats.logic.commands;
 import diyeats.commons.exceptions.ProgramException;
 import diyeats.model.meal.Meal;
 import diyeats.model.meal.MealList;
+import diyeats.model.undo.Undo;
 import diyeats.model.user.User;
 import diyeats.model.wallet.Payment;
 import diyeats.model.wallet.Wallet;
@@ -61,7 +62,7 @@ public class MarkDoneCommand extends Command {
      * @param wallet the wallet object that stores transaction information
      */
     @Override
-    public void execute(MealList meals, Storage storage, User user, Wallet wallet) {
+    public void execute(MealList meals, Storage storage, User user, Wallet wallet, Undo undo) {
         ui.showLine();
         if (index <= 0 || index > meals.getMealsList(currentDate).size()) {
             ui.showMessage("Index provided out of bounds for list of meals on " + currentDate);

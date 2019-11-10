@@ -16,3 +16,10 @@ weight
 height
 activity
 gender
+clear
+startdate
+enddate
+undo
+edit
+pay
+deposit

@@ -2,6 +2,7 @@ package diyeats.logic.commands;
 
 import diyeats.commons.exceptions.ProgramException;
 import diyeats.model.meal.MealList;
+import diyeats.model.undo.Undo;
 import diyeats.model.user.User;
 import diyeats.model.wallet.Wallet;
 import diyeats.storage.Storage;
@@ -33,7 +34,8 @@ public abstract class Command {
      * @param user the object that handles all user data
      * @throws ProgramException when there is an error
      */
-    public abstract void execute(MealList meals, Storage storage, User user, Wallet wallet) throws ProgramException;
+    public abstract void execute(MealList meals, Storage storage, User user, Wallet wallet, Undo undo)
+            throws ProgramException;
 
     public void setResponseStr(String responseStr) {
         this.responseStr = responseStr;

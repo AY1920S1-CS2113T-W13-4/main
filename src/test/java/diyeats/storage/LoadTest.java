@@ -112,7 +112,7 @@ public class LoadTest {
 
     @Test
     public void loadUserTest() {
-        final String expectedString = "Hashir|175|22|MALE|true|2|70.0|2019-11-08";
+        final String expectedString = "Foo Chi Hen|100|22|MALE|true|2|0.0|2019-11-10";
         User user = new User();
 
         try {
